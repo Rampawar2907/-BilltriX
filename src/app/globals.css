@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 96.1%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 224 64% 33%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 90.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 90.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 263 70% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 224 64% 33%;
+    --radius: 0.75rem;
+    --chart-1: 221.2 83.2% 53.3%;
+    --chart-2: 262.1 83.3% 57.8%;
+    --chart-3: 199 89% 48%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 224 64% 33%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 263 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 64% 40%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 224 64% 40%;
+    --sidebar-ring: 224 64% 33%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 263 70% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+    size: A4 portrait;
+  }
+  
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    width: 210mm !important;
+    background: white !important;
+    color: black !important;
+    overflow: visible !important;
+  }
+
+  /* Hide the entire main app and overlays to prevent empty first page */
+  #__next, main, [data-sidebar="sidebar-wrapper"], nav, aside, header, footer, .print\:hidden {
+    display: none !important;
+  }
+
+  /* Target Radix Dialog components */
+  [role="dialog"] {
+    position: static !important;
+    display: block !important;
+    width: 210mm !important;
+    max-width: none !important;
+    min-height: 297mm !important;
+    margin: 0 !important;
+    padding: 20mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    visibility: visible !important;
+    transform: none !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  /* Ensure the overlay doesn't create a blank page */
+  [data-state="open"] {
+    background: none !important;
+  }
+  
+  .fixed.inset-0.bg-black\/80 {
+    display: none !important;
+  }
+
+  /* Force content visibility inside the dialog */
+  [role="dialog"] * {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Typography and Colors */
+  .text-primary { color: #000 !important; }
+  .text-muted-foreground { color: #444 !important; }
+  .font-bold { color: #000 !important; }
+
+  /* Background colors that should print */
+  .bg-slate-900 {
+    background-color: #000 !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .bg-slate-50 {
+    background-color: #f8fafc !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Table layout for print */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  
+  th, td {
+    border-bottom: 1px solid #eee !important;
+  }
+}
